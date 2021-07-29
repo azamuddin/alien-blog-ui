@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios'; 
 import { useForm } from 'react-hook-form';
-import { withCookie } from 'next-cookie';
+import { useCookie } from 'next-cookie';
+import {NextPageContext} from 'next';
 
-function Login(props: {cookie: { set: Function, get: Function}}){
+function Login(props: {cookie: string}){
 
-  const { cookie } = props;
+  const { cookie } = useCookie(props.cookie);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const [error, setError] = useState('')
 
@@ -73,4 +74,12 @@ function Login(props: {cookie: { set: Function, get: Function}}){
   </>
 }
 
-export default withCookie(Login)
+export function getServerSideProps(ctx: NextPageContext){
+  return {
+    props: {
+      cookie: ctx.req?.headers.cookie || ''
+    }
+  }
+}
+
+export default Login
