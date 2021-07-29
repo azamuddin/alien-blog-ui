@@ -1,7 +1,6 @@
 import { NextPageContext } from 'next'; 
 import * as React from 'react'; 
 import { useRouter } from 'next/router'
-import * as axios from 'axios';
 import { format } from 'date-fns'; 
 
 import TopNav from '../../components/TopNav'
