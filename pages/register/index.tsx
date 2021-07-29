@@ -27,14 +27,14 @@ export default function Register(){
             id="name"
             {...register("name", {required: true})}
           />
-          {errors.email && <div className="text-red-600 text-sm mt-1">This field is required</div>}
+          {errors.name && <div className="text-red-600 text-sm mt-1">This field is required</div>}
         </div>
         <div className="mt-5">
-          <label htmlFor="name">Email</label>
+          <label htmlFor="email">Email</label>
           <input 
             type="email"
             className="border w-full border-indigo-600 rounded p-2"
-            id="name"
+            id="email"
             {...register("email", {
               required: true, 
             })}
@@ -42,11 +42,11 @@ export default function Register(){
           {errors.email && <div className="text-red-600 text-sm mt-1">This field is required</div>}
         </div>
         <div className="mt-5">
-          <label htmlFor="name">Password</label>
+          <label htmlFor="password">Password</label>
           <input 
             type="password"
             className="border w-full border-indigo-600 rounded p-2"
-            id="name"
+            id="password"
             {...register("password", {
               required: true
             })}
@@ -54,11 +54,11 @@ export default function Register(){
           {errors.password && <div className="text-red-600 text-sm mt-1">This field is required</div>}
         </div>
         <div className="mt-5">
-          <label htmlFor="name">Password Confirmation</label>
+          <label htmlFor="password_confirmation">Password Confirmation</label>
           <input 
             type="password"
             className="border w-full border-indigo-600 rounded p-2"
-            id="name"
+            id="password_confirmation"
             {...register("password_confirmation", {
               validate: value => {
                 return value === password.current
