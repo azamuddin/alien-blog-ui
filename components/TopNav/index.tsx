@@ -1,11 +1,11 @@
 import * as React from 'react'; 
 import Link from 'next/link';
-import localStorage from 'localStorage';
 import {useSelector} from 'react-redux';
+import {User} from '../../types';
 
 export default function TopNav(){
 
-  let user = useSelector(state => state.user);
+  let user = useSelector((state: {user: User}) => state.user);
 
   let logout = function(){
     window.location.href = "/logout"
@@ -42,7 +42,7 @@ export default function TopNav(){
             </Link>
           </div>
           <div className="p-1 underline cursor-pointer">
-            <div href="/register" onClick={logout}>
+            <div onClick={logout}>
               Logout
             </div>
           </div>
