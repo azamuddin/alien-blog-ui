@@ -1,4 +1,3 @@
-import {NextPageContext} from 'next'
 import Posts from '../components/Posts'
 import axios from 'axios';
 
@@ -16,7 +15,7 @@ export default function Home() {
   )
 }
 
-export async function getServerSideProps(ctx: NextPageContext){
+export async function getServerSideProps(){
 
   const LIMIT = 1;
 
@@ -28,7 +27,7 @@ export async function getServerSideProps(ctx: NextPageContext){
     props: {
       initialReduxState: {
         posts
-      }
+      } 
     }
   }
 }
