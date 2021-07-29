@@ -1,7 +1,6 @@
 import {NextPageContext} from 'next'
-import {useSelector} from 'react-redux'
 import Posts from '../components/Posts'
-import * as axios from 'axios';
+import axios from 'axios';
 
 import TopNav from '../components/TopNav'
 
