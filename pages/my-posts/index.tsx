@@ -1,8 +1,8 @@
-import * as axios from 'axios';
+import axios from 'axios';
 import Posts from '../../components/Posts';
 import TopNav from '../../components/TopNav';
-import localStorage from 'localStorage';
 import { withCookie, useCookie } from 'next-cookie';
+import {NextPageContext} from 'next';
 
 function MyPosts(){
   return <>
@@ -13,7 +13,7 @@ function MyPosts(){
   </>
 }
 
-export async function getServerSideProps(ctx){
+export async function getServerSideProps(ctx: NextPageContext){
 
   const LIMIT = 1;
 
