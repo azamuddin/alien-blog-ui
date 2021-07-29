@@ -19,6 +19,7 @@ export async function getServerSideProps(ctx: NextPageContext){
 
   const API = process.env.NEXT_PUBLIC_API
   
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const cookie = useCookie(ctx);
   const token = cookie.get('alien_blog_token');
 

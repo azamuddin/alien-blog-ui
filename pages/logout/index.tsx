@@ -9,7 +9,7 @@ function Logout(props: { cookie: any}){
     cookie.remove('alien_blog_user');
     cookie.remove('alien_blog_token');
     window.location.href = "/"
-  }, [])
+  }, [cookie])
 
   return <div>
   </div>

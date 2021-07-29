@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps, user }: AppProps & {user: User | null}) {
 
 MyApp.getInitialProps = function (appContext: AppContext){
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const cookie = useCookie(appContext.ctx);
   const user = cookie.get('alien_blog_user');
 
