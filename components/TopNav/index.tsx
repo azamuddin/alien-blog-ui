@@ -14,7 +14,9 @@ export default function TopNav(){
           Login
         </div>
         <div className="p-1 underline cursor-pointer">
-          Register
+          <Link href="/register">
+            Register
+          </Link>
         </div>
       </div>
     </div>
