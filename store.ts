@@ -1,20 +1,30 @@
 import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import {Post, User} from './types'
 
-const initialState = {
+export type AppStore = {
+  user: User | null, 
+  token: string | null, 
+  posts: Post[]
+}
+
+export type ActionStore = {
+  type: string, 
+  payload?: any
+}
+
+const initialState: AppStore = {
   user: null, 
   token: null, 
   posts: [], 
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: ActionStore) => {
   switch (action.type) {
-    case "LOGIN":
-      return {...state, ...action.payload}
 
-    case "LOGOUT":
-      return {user: null, token: null}
+    case "ACCEPT_USER":
+      return {...state, user: action.payload}
 
     case "POST_LOADED":
       return {...state, posts: action.payload}
@@ -35,9 +45,9 @@ function initStore(preloadedState = initialState) {
   )
 }
 
-let store;
+let store: any;
 
-export const initializeStore = (preloadedState) => {
+export const initializeStore = (preloadedState?: AppStore) => {
   let _store = store ?? initStore(preloadedState)
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -59,7 +69,7 @@ export const initializeStore = (preloadedState) => {
   return _store
 }
 
-export function useStore(initialState) {
+export function useStore(initialState: AppStore) {
   const store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }
