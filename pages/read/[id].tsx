@@ -5,8 +5,9 @@ import axios from 'axios';
 import { format } from 'date-fns'; 
 
 import TopNav from '../../components/TopNav'
+import {Post} from '../../types';
 
-export default function Read(props){
+export default function Read(props: { post: Post }){
 
   let { query: { id } } = useRouter();
   const { post } = props; 
