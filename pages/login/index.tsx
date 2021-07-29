@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import * as axios from 'axios'; 
+import axios from 'axios'; 
 import { useForm } from 'react-hook-form';
 import { withCookie } from 'next-cookie';
 
-function Login(props){
+function Login(props: {cookie: { set: Function, get: Function}}){
 
   const { cookie } = props;
 
@@ -11,7 +11,7 @@ function Login(props){
 
   const [error, setError] = useState('')
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData: {email: string, password: string}) => {
     let { data } = await 
       axios.post(`${process.env.NEXT_PUBLIC_API}/auth/login`, formData);
 
