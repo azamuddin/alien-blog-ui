@@ -1,11 +1,12 @@
 import * as React from 'react' 
 import { useForm } from 'react-hook-form'
-import * as axios from 'axios'
+import axios from 'axios'
+import {User} from '../../types';
 
 export default function Register(){
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = async formData => {
+  const onSubmit = async (formData: Partial<User>) => {
     let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth/register`, formData);
 
     if(!data.error){
