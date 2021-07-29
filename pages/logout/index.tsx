@@ -1,7 +1,7 @@
 import { useEffect } from 'react'; 
 import { withCookie } from 'next-cookie'
 
-function Logout(props){
+function Logout(props: { cookie: any}){
 
   let { cookie } = props;
 
