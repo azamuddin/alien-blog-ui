@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {Post, User} from './types'
+import uniqBy from 'lodash/uniqBy'
 
 export type AppStore = {
   user: User | null, 
@@ -30,7 +31,7 @@ const reducer = (state = initialState, action: ActionStore) => {
       return {...state, posts: action.payload}
 
     case "APPEND_POSTS": 
-      return {...state, posts: [...state.posts, ...action.payload]}
+      return {...state, posts: uniqBy([...state.posts, ...action.payload], 'id')}
 
     default: 
       return state;
