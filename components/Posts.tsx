@@ -1,11 +1,13 @@
 import {useSelector, useDispatch} from "react-redux"
 import { formatDistance } from 'date-fns'
 import Link from 'next/link'
-import * as axios from 'axios';
+import axios from 'axios';
+import {Post} from "../types";
 
-export default function Posts(props){
+export default function Posts(){
 
-  let posts = useSelector((state: {posts: object}) => state.posts);
+  let posts = useSelector((state: {posts: Post[]}) => state.posts);
+
   let dispatch = useDispatch();
 
   const loadMore = async function(){

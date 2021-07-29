@@ -1,4 +1,5 @@
 export type User = {
+  id: number,
   name: string, 
   email: string, 
   createdAt: string, 
@@ -6,6 +7,7 @@ export type User = {
 }
 
 export type Post = {
+  id: number,
   title: string, 
   content: string, 
   user: User, 
