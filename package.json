@@ -23,6 +23,7 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.171",
     "@types/react": "17.0.15",
     "autoprefixer": "^10.3.1",
     "eslint": "7.31.0",
