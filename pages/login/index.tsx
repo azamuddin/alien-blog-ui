@@ -17,6 +17,7 @@ export default function Login(){
     }
 
     localStorage.setItem('alien_blog_token', data.data.token);
+    localStorage.setItem('alien_blog_user', JSON.stringify(data.data.user));
     window.location.href = "/";
 
   }
