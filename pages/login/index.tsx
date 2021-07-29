@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import * as axios from 'axios'; 
 import { useForm } from 'react-hook-form';
-import localStorage from 'localStorage';
+import { withCookie } from 'next-cookie';
 
-export default function Login(){
+function Login(props){
+
+  const { cookie } = props;
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -17,8 +19,8 @@ export default function Login(){
       setError(data.message);
     }
 
-    localStorage.setItem('alien_blog_token', data.data.token);
-    localStorage.setItem('alien_blog_user', JSON.stringify(data.data.user));
+    cookie.set('alien_blog_token', data.data.token);
+    cookie.set('alien_blog_user', JSON.stringify(data.data.user));
     window.location.href = "/";
 
   }
@@ -70,3 +72,5 @@ export default function Login(){
     </div>
   </>
 }
+
+export default withCookie(Login)

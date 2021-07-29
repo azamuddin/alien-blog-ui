@@ -1,15 +1,14 @@
 import * as React from 'react'; 
 import Link from 'next/link';
 import localStorage from 'localStorage';
+import {useSelector} from 'react-redux';
 
 export default function TopNav(){
 
-  let user = JSON.parse(localStorage.getItem('alien_blog_user') || '{}');
+  let user = useSelector(state => state.user);
 
   let logout = function(){
-    localStorage.removeItem('alien_blog_user');
-    localStorage.removeItem('alien_blog_token');
-    window.location.reload();
+    window.location.href = "/logout"
   }
 
   return <div className="bg-gray-100 p-3">
@@ -20,7 +19,7 @@ export default function TopNav(){
         </Link>
       </div>
 
-      {!user.name ? <>
+      {!user?.name ? <>
         <div className="flex ml-auto space-x-3">
           <div className="p-1 px-3 bg-indigo-600 text-white rounded shadow cursor-pointer">
             <Link href="/login">
@@ -35,10 +34,10 @@ export default function TopNav(){
         </div>
       </> : null}
 
-      {user.name ? <>
+      {user?.name ? <>
         <div className="flex ml-auto space-x-3">
           <div className="p-1 px-3 underline cursor-pointer">
-            <Link href="/login">
+            <Link href="/my-posts">
               My Posts
             </Link>
           </div>
