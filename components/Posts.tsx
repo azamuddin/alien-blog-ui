@@ -3,16 +3,30 @@ import { formatDistance } from 'date-fns'
 import Link from 'next/link'
 import axios from 'axios';
 import {Post} from "../types";
+import {useCookie} from "next-cookie";
 
-export default function Posts(){
+export default function Posts({owned} : {owned?: boolean}){
 
   let posts = useSelector((state: {posts: Post[]}) => state.posts);
 
   let dispatch = useDispatch();
 
+  const cookie = useCookie(); 
+  const token = cookie.get('alien_blog_token');
+
   const loadMore = async function(){
+
+    const LIMIT = 1
+
+    let ENDPOINT =
+      `${process.env.NEXT_PUBLIC_API}/${!owned ? 'posts' : 'posts/my-posts'}?limit=${LIMIT}&skip=${posts.length}`;
+
     let { data: { data } } = await axios
-    .get(`${process.env.NEXT_PUBLIC_API}/posts?limit=1&skip=${posts.length}`)
+      .get(ENDPOINT, {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
 
     dispatch({
       type: "APPEND_POSTS", 
