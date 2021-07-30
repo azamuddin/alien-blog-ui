@@ -1,3 +1,4 @@
+import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
 import type { AppContext, AppProps } from 'next/app'
 import { Provider } from 'react-redux'
