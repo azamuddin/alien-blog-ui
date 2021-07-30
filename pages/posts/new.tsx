@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic'
 import axios from 'axios';
 import 'react-quill/dist/quill.snow.css';
@@ -20,6 +20,16 @@ function NewPost(){
 
   const cookie = useCookie();
   const token = cookie.get('alien_blog_token')
+
+  useEffect(() => {
+    if(!token){
+      router.push('/')
+    }
+  }, [token])
+
+  if(!token){
+    return <div/>
+  }
 
   const save = async () => {
 
