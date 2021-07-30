@@ -42,19 +42,33 @@ export async function getServerSideProps(ctx: NextPageContext){
   const cookie = useCookie(ctx);
   const token = cookie.get('alien_blog_token');
 
-  let {data: { data: posts} } = await axios.get(`${API}/posts/my-posts?limit=${LIMIT}`, {
-    headers: {
-      authorization: `Bearer ${token}`
-    }
-  });
+  try{
+    let {data: { data: posts} } = await axios.get(`${API}/posts/my-posts?limit=${LIMIT}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
 
-  return {
-    props: {
-      initialReduxState: {
-        posts
+    return {
+      props: {
+        initialReduxState: {
+          posts
+        }
       }
     }
+
+  } catch(err){
+
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+
   }
+
+
 
 }
 
