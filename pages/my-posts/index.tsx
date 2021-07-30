@@ -27,7 +27,7 @@ function MyPosts(){
         </Link>
       </div>
 
-      <Posts/>
+      <Posts owned={true}/>
     </div>
   </>
 }
