@@ -17,7 +17,7 @@ export default function Home() {
 
 export async function getServerSideProps(){
 
-  const LIMIT = 1;
+  const LIMIT = 6;
 
   const API = process.env.NEXT_PUBLIC_API
 

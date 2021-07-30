@@ -34,7 +34,7 @@ function MyPosts(){
 
 export async function getServerSideProps(ctx: NextPageContext){
 
-  const LIMIT = 1;
+  const LIMIT = 6;
 
   const API = process.env.NEXT_PUBLIC_API
   

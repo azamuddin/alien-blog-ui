@@ -16,7 +16,7 @@ export default function Posts({owned} : {owned?: boolean}){
 
   const loadMore = async function(){
 
-    const LIMIT = 1
+    const LIMIT = 6
 
     let ENDPOINT =
       `${process.env.NEXT_PUBLIC_API}/${!owned ? 'posts' : 'posts/my-posts'}?limit=${LIMIT}&skip=${posts.length}`;
