@@ -2,15 +2,19 @@ import * as React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import {User} from '../../types';
+import {useRouter} from 'next/router';
 
 export default function Register(){
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  const router = useRouter();
+
   const onSubmit = async (formData: Partial<User>) => {
     let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth/register`, formData);
 
     if(!data.error){
-      return window.location.href = "/login";
+      return router.push("/login");
     }
   }
   const password = React.useRef({});

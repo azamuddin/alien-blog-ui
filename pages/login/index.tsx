@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useCookie } from 'next-cookie';
 import {NextPageContext} from 'next';
+import {useRouter} from 'next/router';
 
 function Login(props: {cookie: string}){
 
   const { cookie } = useCookie(props.cookie);
+  const router = useRouter();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -24,7 +26,7 @@ function Login(props: {cookie: string}){
 
     cookie.set('alien_blog_token', data.data.token);
     cookie.set('alien_blog_user', JSON.stringify(data.data.user));
-    window.location.href = "/";
+    router.push('/')
 
   }
 

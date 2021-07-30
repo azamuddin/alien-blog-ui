@@ -2,13 +2,16 @@ import * as React from 'react';
 import Link from 'next/link';
 import {useSelector} from 'react-redux';
 import {User} from '../../types';
+import {useRouter} from 'next/router';
 
 export default function TopNav(){
 
   let user = useSelector((state: {user: User}) => state.user);
 
+  const router = useRouter()
+
   let logout = function(){
-    window.location.href = "/logout"
+    router.push('/logout');
   }
 
   return <div className="bg-gray-100 p-3">
