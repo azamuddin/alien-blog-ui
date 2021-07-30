@@ -3,11 +3,30 @@ import Posts from '../../components/Posts';
 import TopNav from '../../components/TopNav';
 import { withCookie, useCookie } from 'next-cookie';
 import {NextPageContext} from 'next';
+import Link from 'next/link';
 
 function MyPosts(){
   return <>
     <TopNav/>
     <div className="max-w-4xl mx-auto">
+
+      <div className="flex my-5">
+        <Link href="/posts/new">
+          <button 
+            className="
+              bg-indigo-600 
+              hover:bg-indigo-500
+              text-white
+              rounded 
+              p-2 
+              px-3
+              ml-auto
+            ">
+            Create post
+          </button>
+        </Link>
+      </div>
+
       <Posts/>
     </div>
   </>
