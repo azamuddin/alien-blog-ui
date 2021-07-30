@@ -13,11 +13,13 @@ function Login(props: {cookie: string}){
   const [error, setError] = useState('')
 
   const onSubmit = async (formData: {email: string, password: string}) => {
+
     let { data } = await 
       axios.post(`${process.env.NEXT_PUBLIC_API}/auth/login`, formData);
 
     if(data.error){
       setError(data.message);
+      return;
     }
 
     cookie.set('alien_blog_token', data.data.token);
