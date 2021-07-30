@@ -10,7 +10,7 @@ function Logout(props: { cookie: any}){
   useEffect(() => {
     cookie.remove('alien_blog_user');
     cookie.remove('alien_blog_token');
-    rouer.psuh('/')
+    router.push('/')
   }, [cookie])
 
   return <div>
