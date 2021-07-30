@@ -21,11 +21,11 @@ export default function TopNav(){
 
       {!user?.name ? <>
         <div className="flex ml-auto space-x-3">
-          <div className="p-1 px-3 bg-indigo-600 text-white rounded shadow cursor-pointer">
-            <Link href="/login">
+          <Link href="/login">
+            <div className="p-1 px-3 bg-indigo-600 text-white rounded shadow cursor-pointer">
               Login
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className="p-1 underline cursor-pointer">
             <Link href="/register">
               Register
